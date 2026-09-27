@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to survive and thrive in the age of AI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 60px;
+      text-align: center;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.3;
+      max-width: 1200px;
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 1.3;
+      max-width: 900px;
+    }
+
+    .subtitle {
+      font-size: 1.8rem;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    .tip-label {
+      font-size: 1.6rem;
+      color: #888;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .content {
+      font-size: 2rem;
+      line-height: 1.6;
+      max-width: 900px;
+      color: #ccc;
+    }
+
+    .content ul {
+      text-align: left;
+      list-style: none;
+    }
+
+    .content li {
+      margin: 20px 0;
+    }
+
+    .content li::before {
+      content: "• ";
+      color: #888;
+    }
+
+    .slide[data-progressive] .content li {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide[data-progressive] .content li.visible {
+      opacity: 1;
+    }
+
+    .slide[data-progressive="subtitle"] .subtitle {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide[data-progressive="subtitle"] .subtitle.visible {
+      opacity: 1;
+    }
+
+    .qr-container {
+      display: flex;
+      gap: 80px;
+    }
+
+    .qr-item {
+      text-align: center;
+    }
+
+    .slide .qr-container img {
+      width: 300px;
+      height: 300px;
+      max-width: none;
+      max-height: none;
+    }
+
+    .qr-label {
+      margin-top: 2px;
+      font-size: 1.6rem;
+      color: #888;
+    }
+
+    .qr-label a {
+      color: #58a6ff;
+    }
+
+    .slide img {
+      max-width: 85%;
+      max-height: 75vh;
+      object-fit: contain;
+    }
+
+    .repo-link {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      color: #888;
+    }
+
+    .repo-link a {
+      color: #58a6ff;
+    }
+
+    .progress {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .nav-hint {
+      position: fixed;
+      bottom: 20px;
+      left: 30px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title -->
+  <div class="slide">
+    <h1>How to survive and thrive in the age of AI</h1>
+    <div class="subtitle">@ykdojo at Google</div>
+  </div>
+
+  <!-- Slide 2: Introduction -->
+  <div class="slide">
+    <h1>Introduction</h1>
+    <div class="subtitle">About me</div>
+  </div>
+
+  <!-- Slide 3: Tip 1 -->
+  <div class="slide">
+    <div class="tip-label">Tip 1</div>
+    <h1>Use AI for research</h1>
+  </div>
+
+  <!-- Slide 4: Tip 1 details -->
+  <div class="slide" data-progressive="empty">
+    <h2 style="margin-bottom: 30px;">Give it enough context</h2>
+    <div class="content">
+      <ul>
+        <li>Example: download lecture videos</li>
+        <li>Transcribe them with Gemini or another model</li>
+        <li>Feed the text into a more advanced model</li>
+        <li>Talk to it to understand the material well</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 5: Tip 2 -->
+  <div class="slide">
+    <div class="tip-label">Tip 2</div>
+    <h1>Use AI, but deepen your understanding at the same time</h1>
+  </div>
+
+  <!-- Slide 6: Tip 3 -->
+  <div class="slide">
+    <div class="tip-label">Tip 3</div>
+    <h1>Optimism with healthy skepticism</h1>
+  </div>
+
+  <!-- Slide 7: Tip 3 details -->
+  <div class="slide" data-progressive>
+    <div class="content">
+      <ul>
+        <li>Optimism: try different tools</li>
+        <li>Skepticism: is this output actually correct?</li>
+        <li>Does the app it created function as intended?</li>
+        <li>Did the research produce what I asked for?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 8: Tip 4 -->
+  <div class="slide">
+    <div class="tip-label">Tip 4</div>
+    <h1>Learn to build with AI</h1>
+  </div>
+
+  <!-- Slide 9: super-voice-assistant -->
+  <div class="slide">
+    <img src="age-of-ai-slides/super-voice-assistant-repo.png" alt="super-voice-assistant repo on GitHub">
+    <div class="repo-link"><a href="https://github.com/ykdojo/super-voice-assistant" target="_blank">github.com/ykdojo/super-voice-assistant</a></div>
+  </div>
+
+  <!-- Slide 10: Build for problems -->
+  <div class="slide" data-progressive="empty">
+    <h2 style="margin-bottom: 30px;">Solve real problems with AI</h2>
+    <div class="content">
+      <ul>
+        <li>Build tools to solve your own problems</li>
+        <li>Solve business problems, even in non-technical roles</li>
+        <li>Automate research, data processing, internal chat/email</li>
+        <li>Internal experiments and external-facing AI apps and agents</li>
+        <li>Don't overlook multimodal solutions: images, audio, video</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 11: Hand-off -->
+  <div class="slide">
+    <img src="age-of-ai-slides/agentic-ai-builder-lab.png" alt="Agentic AI Builder Lab with Google Cloud">
+  </div>
+
+  <!-- Slide 12: QR codes -->
+  <div class="slide">
+    <div class="qr-container">
+      <div class="qr-item">
+        <img src="age-of-ai-slides/qr-antigravity-video.png" alt="Antigravity SDLC video QR">
+        <div class="qr-label"><a href="https://www.youtube.com/watch?v=K3YYr6yauAw" target="_blank">Antigravity for SDLC</a></div>
+      </div>
+      <div class="qr-item">
+        <img src="age-of-ai-slides/qr-linkedin.png" alt="LinkedIn QR">
+        <div class="qr-label"><a href="https://www.linkedin.com/in/ykdojo/" target="_blank">linkedin.com/in/ykdojo</a></div>
+      </div>
+      <div class="qr-item">
+        <img src="age-of-ai-slides/qr-claude-code-video.png" alt="Claude Code video QR">
+        <div class="qr-label"><a href="https://www.youtube.com/watch?v=6ERUGFurDHY" target="_blank">Claude Code via Google Cloud tips</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress"></div>
+  <div class="nav-hint"></div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progress = document.querySelector('.progress');
+    let current = 0;
+
+    function getProgressiveItems(slide) {
+      const type = slide.getAttribute('data-progressive');
+      if (type === 'subtitle') {
+        return slide.querySelectorAll('.subtitle');
+      }
+      return slide.querySelectorAll('li');
+    }
+
+    function initSlide(slide, itemCount, showAll) {
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const type = slide.getAttribute('data-progressive');
+        const startsEmpty = type === 'subtitle' || type === 'empty';
+        let showCount;
+        if (showAll) {
+          showCount = items.length;
+        } else if (itemCount !== undefined) {
+          showCount = itemCount;
+        } else {
+          showCount = startsEmpty ? 0 : 1;
+        }
+        items.forEach((item, i) => {
+          if (i < showCount) item.classList.add('visible');
+          else item.classList.remove('visible');
+        });
+      }
+    }
+
+    function updateHash() {
+      const slide = slides[current];
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const visible = Array.from(items).filter(i => i.classList.contains('visible')).length;
+        if (visible > 0) {
+          window.location.hash = `${current + 1}-${visible}`;
+          return;
+        }
+      }
+      window.location.hash = current + 1;
+    }
+
+    function showSlide(n, itemCount, showAll) {
+      if (n < 0 || n >= slides.length) return;
+      slides[current].classList.remove('active');
+      current = n;
+      initSlide(slides[current], itemCount, showAll);
+      slides[current].classList.add('active');
+      progress.textContent = `${current + 1} / ${slides.length}`;
+      updateHash();
+    }
+
+    function next() {
+      const slide = slides[current];
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const hidden = Array.from(items).filter(i => !i.classList.contains('visible'));
+        if (hidden.length > 0) {
+          hidden[0].classList.add('visible');
+          updateHash();
+          return;
+        }
+      }
+      showSlide(current + 1);
+    }
+
+    function prev() {
+      const slide = slides[current];
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const visible = Array.from(items).filter(i => i.classList.contains('visible'));
+        const type = slide.getAttribute('data-progressive');
+        const minVisible = (type === 'subtitle' || type === 'empty') ? 0 : 1;
+        if (visible.length > minVisible) {
+          visible[visible.length - 1].classList.remove('visible');
+          updateHash();
+          return;
+        }
+      }
+      showSlide(current - 1, undefined, true);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') next();
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+    });
+
+    // Touch support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+    });
+
+    // Load from URL hash or start at 0
+    const hashParts = window.location.hash.slice(1).split('-');
+    const slideNum = parseInt(hashParts[0]) - 1;
+    const itemCount = hashParts[1] !== undefined ? parseInt(hashParts[1]) : undefined;
+    showSlide(slideNum >= 0 && slideNum < slides.length ? slideNum : 0, itemCount);
+  </script>
+
+</body>
+</html>
