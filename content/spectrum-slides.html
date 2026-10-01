@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Spectrum of Agentic Coding</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 60px;
+      text-align: center;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.3;
+      max-width: 1200px;
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 1.3;
+      max-width: 900px;
+    }
+
+    .subtitle {
+      font-size: 1.8rem;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    .content {
+      font-size: 2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      color: #ccc;
+    }
+
+    .content ul {
+      text-align: left;
+      list-style: none;
+    }
+
+    .content li {
+      margin: 20px 0;
+    }
+
+    .content li::before {
+      content: "• ";
+      color: #888;
+    }
+
+    .slide[data-progressive] .content li {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide[data-progressive] .content li.visible {
+      opacity: 1;
+    }
+
+    .slide[data-progressive="table"] tr:not(:first-child) {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide[data-progressive="table"] tr.visible {
+      opacity: 1;
+    }
+
+    .slide[data-progressive="subtitle"] .subtitle {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide[data-progressive="subtitle"] .subtitle.visible {
+      opacity: 1;
+    }
+
+    .qr-container {
+      display: flex;
+      gap: 80px;
+    }
+
+    .qr-item {
+      text-align: center;
+    }
+
+    .slide .qr-container img {
+      width: 300px;
+      height: 300px;
+      max-width: none;
+      max-height: none;
+    }
+
+    .qr-label {
+      margin-top: 2px;
+      font-size: 1.6rem;
+      color: #888;
+    }
+
+    .qr-label a {
+      color: #58a6ff;
+    }
+
+    .slide img {
+      max-width: 85%;
+      max-height: 75vh;
+      object-fit: contain;
+    }
+
+    .spectrum-svg {
+      width: 90%;
+      max-width: 1700px;
+      max-height: 75vh;
+    }
+
+    .coin-container {
+      display: flex;
+      gap: 160px;
+      align-items: flex-start;
+    }
+
+    .coin-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .steps {
+      list-style: none;
+      text-align: center;
+    }
+
+    .steps li {
+      font-size: 1.8rem;
+      color: #ccc;
+      margin: 14px 0;
+    }
+
+    .steps .conf {
+      color: #777;
+    }
+
+    .steps .step-arrow {
+      display: block;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .slide[data-progressive="reveal"] .reveal {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide[data-progressive="reveal"] .reveal.visible {
+      opacity: 1;
+    }
+
+    @font-face {
+      font-family: 'Virgil';
+      src: url('spectrum-slides/Virgil.woff2') format('woff2');
+    }
+
+    .chart-text {
+      font-family: 'Virgil', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive;
+    }
+
+    table {
+      border-collapse: collapse;
+      font-size: 1.4rem;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 15px 25px;
+      border: 1px solid #444;
+      text-align: left;
+    }
+
+    th {
+      background: #2a2a2a;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: #222;
+    }
+
+    .progress {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .nav-hint {
+      position: fixed;
+      bottom: 20px;
+      left: 30px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title -->
+  <div class="slide">
+    <h1>The spectrum of agentic coding</h1>
+    <div class="subtitle">@ykdojo at Google</div>
+  </div>
+
+  <!-- Slide 2: Hook -->
+  <div class="slide">
+    <h2>Vibe coding and traditional software engineering are not opposites</h2>
+  </div>
+
+  <!-- Slide 3: Spectrum chart -->
+  <div class="slide">
+    <img src="spectrum-slides/spectrum-chart.png" alt="Spectrum of agentic coding">
+  </div>
+
+  <!-- Slide 4: Four levels header -->
+  <div class="slide">
+    <h1>Four levels of agentic coding</h1>
+  </div>
+
+  <!-- Slide 5: Level 1 header -->
+  <div class="slide">
+    <h1>Level 1: Vibe coding</h1>
+  </div>
+
+  <!-- Slide 6: Level 1 details -->
+  <div class="slide" data-progressive>
+    <div class="content">
+      <ul>
+        <li>Let AI go wild</li>
+        <li>Forget the code even exists</li>
+        <li>Error logs? Just throw them at the AI</li>
+        <li>Version control? What's that?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 7: Level 1 caveat -->
+  <div class="slide">
+    <h2>Fine for one-off projects</h2>
+  </div>
+
+  <!-- Slide 8: Level 1 caveat 2 -->
+  <div class="slide">
+    <h2>Don't expect it to be maintainable</h2>
+  </div>
+
+  <!-- Slide 9: Level 2 header -->
+  <div class="slide">
+    <h1>Level 2: Agentic coding with discipline</h1>
+  </div>
+
+  <!-- Slide 10: Level 2 details -->
+  <div class="slide" data-progressive>
+    <div class="content">
+      <ul>
+        <li>Version control - Git and GitHub</li>
+        <li>File-level understanding</li>
+        <li>Basic security precautions</li>
+        <li>Testing - make sure it actually works</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 11: Level 3 header -->
+  <div class="slide">
+    <h1>Level 3: Agentic software engineering</h1>
+  </div>
+
+  <!-- Slide 12: Level 3 details -->
+  <div class="slide" data-progressive>
+    <div class="content">
+      <ul>
+        <li>Tests you actually verify</li>
+        <li>Pre-commit hooks</li>
+        <li>CI jobs for continuous testing</li>
+        <li>Function-level understanding</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 13: Additional quality control measures -->
+  <div class="slide">
+    <h2>Additional quality control measures</h2>
+  </div>
+
+  <!-- Slide 14: Quality control details -->
+  <div class="slide" data-progressive>
+    <div class="content">
+      <ul>
+        <li>Careful manual testing</li>
+        <li>End-to-end tests</li>
+        <li>One-shot AI code reviews</li>
+        <li>Regression checks</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 15: Level 4 header -->
+  <div class="slide">
+    <h1>Level 4: High-quality software engineering</h1>
+  </div>
+
+  <!-- Slide 16: Level 4 details 1 -->
+  <div class="slide" data-progressive>
+    <div class="content">
+      <ul>
+        <li>Line-by-line understanding</li>
+        <li>Self-reflection loops</li>
+        <li>Interactive AI code reviews</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 17: Interactive AI code review - frame from the Antigravity SDLC video -->
+  <div class="slide">
+    <img src="spectrum-slides/sdlc-review-prompt.png" alt="Interactive PR review prompt in Antigravity CLI next to the PR on GitHub">
+  </div>
+
+  <!-- Slide 18: Review result - file-by-file summaries -->
+  <div class="slide">
+    <img src="spectrum-slides/sdlc-review-summaries.png" alt="File-by-file summary of the PR changes in Antigravity CLI">
+  </div>
+
+  <!-- Slide 19: Follow-up - explain this line by line -->
+  <div class="slide">
+    <img src="spectrum-slides/sdlc-review-followup.png" alt="Follow-up prompt asking to explain a part line by line">
+  </div>
+
+  <!-- Slide 20: Matrix table -->
+  <div class="slide" data-progressive="table">
+    <table>
+      <tr>
+        <th>Level</th>
+        <th>Quality</th>
+        <th>Speed</th>
+        <th>Testing</th>
+        <th>Code Review</th>
+      </tr>
+      <tr>
+        <td>Vibe Coding</td>
+        <td>Low</td>
+        <td>Lightning</td>
+        <td>Bare minimum</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Agentic Coding with Discipline</td>
+        <td>Okay</td>
+        <td>Faster</td>
+        <td>Sufficient</td>
+        <td>Brief</td>
+      </tr>
+      <tr>
+        <td>Agentic Software Engineering</td>
+        <td>Medium</td>
+        <td>Fast</td>
+        <td>Thorough</td>
+        <td>One-shot</td>
+      </tr>
+      <tr>
+        <td>High-Quality Software Engineering</td>
+        <td>High</td>
+        <td>Decent</td>
+        <td>Rock solid</td>
+        <td>Interactive</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Slide 21: Be flexible -->
+  <div class="slide" data-progressive="subtitle">
+    <h1>Master all four levels</h1>
+    <div class="subtitle">Be flexible</div>
+  </div>
+
+  <!-- Slide 22: Context matters -->
+  <div class="slide" data-progressive="subtitle">
+    <h2>Sometimes vibe coding is fine</h2>
+    <div class="subtitle">Quick prototypes, one-off scripts, experiments</div>
+  </div>
+
+  <!-- Slide 23: High quality when needed -->
+  <div class="slide" data-progressive="subtitle">
+    <h2>Sometimes you need high quality</h2>
+    <div class="subtitle">Large-scale systems, mission-critical, medical software</div>
+  </div>
+
+  <!-- Slide 24: Slop header -->
+  <div class="slide">
+    <h1>The real problem with "slop"</h1>
+  </div>
+
+  <!-- Slide 25: Slop question -->
+  <div class="slide">
+    <h1>more tokens == garbage?</h1>
+  </div>
+
+  <!-- Slide 26: Final -->
+  <div class="slide">
+    <h1>more tokens != garbage</h1>
+  </div>
+
+  <!-- Slide 27: Level 5 header -->
+  <div class="slide" data-progressive="subtitle">
+    <h1>Level 5: Dynamic vibe adjustment (DVA)</h1>
+    <div class="subtitle">Start with vibe → adjust as necessary</div>
+  </div>
+
+  <!-- Slide 28: DVA chart, then frontier - push each point up and to the right -->
+  <div class="slide" data-progressive="reveal">
+    <svg class="spectrum-svg" viewBox="0 0 1700 900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow2" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="8" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <marker id="arr-white" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#eee"/>
+        </marker>
+      </defs>
+      <!-- Axes -->
+      <line x1="183" y1="740" x2="183" y2="90" stroke="#ddd" stroke-width="6"/>
+      <polygon points="183,68 168,100 198,100" fill="#ddd"/>
+      <line x1="183" y1="740" x2="1010" y2="740" stroke="#ddd" stroke-width="6"/>
+      <polygon points="1032,740 1000,725 1000,755" fill="#ddd"/>
+      <text x="120" y="420" fill="#ddd" font-size="42" class="chart-text" transform="rotate(-90 120 420)" text-anchor="middle">Speed</text>
+      <text x="600" y="810" fill="#ddd" font-size="42" class="chart-text" text-anchor="middle">Quality</text>
+      <!-- Frontier through the points -->
+      <path d="M 243 141 L 422 310 L 663 491 L 941 670" fill="none" stroke="#666" stroke-width="4" stroke-dasharray="14 14"/>
+      <!-- Reveal step: north star at top right plus arrows from every level converging on it.
+           Each arrow starts at its circle's center (hidden under the dot, drawn before it),
+           curves up past the label, and the head points at the star. -->
+      <g class="reveal">
+        <path d="M 1180 46 L 1186 64 L 1204 70 L 1186 76 L 1180 94 L 1174 76 L 1156 70 L 1174 64 Z" fill="#fff" filter="url(#glow2)"/>
+        <g stroke="#eee" stroke-width="6" stroke-linecap="round" fill="none">
+          <path d="M 243 141 Q 310 102 370 100" marker-end="url(#arr-white)"/>
+          <path d="M 422 310 Q 482 272 540 255" marker-end="url(#arr-white)"/>
+          <path d="M 663 491 Q 712 426 760 390" marker-end="url(#arr-white)"/>
+          <path d="M 941 670 Q 963 616 985 560" marker-end="url(#arr-white)"/>
+        </g>
+      </g>
+      <circle cx="243" cy="141" r="22" fill="#ff5f66" filter="url(#glow2)"/>
+      <text x="290" y="155" fill="#ff5f66" font-size="40" class="chart-text">Vibe Coding</text>
+      <circle cx="422" cy="310" r="22" fill="#ffb020" filter="url(#glow2)"/>
+      <text x="469" y="324" fill="#ffb020" font-size="40" class="chart-text">Agentic Coding with Discipline</text>
+      <circle cx="663" cy="491" r="22" fill="#22ccee" filter="url(#glow2)"/>
+      <text x="710" y="505" fill="#22ccee" font-size="40" class="chart-text">Agentic Software Engineering</text>
+      <circle cx="941" cy="670" r="22" fill="#2ecc71" filter="url(#glow2)"/>
+      <text x="988" y="684" fill="#2ecc71" font-size="40" class="chart-text">High-Quality Software Engineering</text>
+    </svg>
+  </div>
+
+  <!-- Slide 29: Two sides of the same coin - confidence building, handwritten vs AI -->
+  <div class="slide" data-progressive="reveal">
+    <h2>How do you know if your code is correct?</h2>
+    <div class="subtitle reveal" style="margin-bottom: 60px;">That is the question</div>
+    <div class="coin-container">
+      <div class="coin-col">
+        <div class="coin-title reveal">Handwritten code</div>
+        <ul class="steps">
+          <li class="reveal">Write code <span class="conf">(80%)</span></li>
+          <li class="reveal"><span class="step-arrow">↓</span>Run code <span class="conf">(95%)</span></li>
+          <li class="reveal"><span class="step-arrow">↓</span>Code review <span class="conf">(99%)</span></li>
+        </ul>
+      </div>
+      <div class="coin-col">
+        <div class="coin-title reveal">AI-written code</div>
+        <ul class="steps">
+          <li class="reveal">Write code <span class="conf">(70%)</span></li>
+          <li class="reveal"><span class="step-arrow">↓</span>Run code <span class="conf">(80%)</span></li>
+          <li class="reveal"><span class="step-arrow">↓</span>Write and review ARCHITECTURE.md <span class="conf">(85%)</span></li>
+          <li class="reveal"><span class="step-arrow">↓</span>Write unit tests <span class="conf">(90%)</span></li>
+          <li class="reveal"><span class="step-arrow">↓</span>Write and review TESTING.md <span class="conf">(95%)</span></li>
+          <li class="reveal"><span class="step-arrow">↓</span>Write end-to-end tests <span class="conf">(99%)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="subtitle reveal" style="margin-top: 70px;">Different paths to deepen your understanding and ensure quality</div>
+  </div>
+
+  <!-- Slide 30: QR codes -->
+  <div class="slide">
+    <div class="qr-container">
+      <div class="qr-item">
+        <img src="age-of-ai-slides/qr-antigravity-video.png" alt="Antigravity SDLC video QR">
+        <div class="qr-label"><a href="https://www.youtube.com/watch?v=K3YYr6yauAw" target="_blank">Antigravity for SDLC</a></div>
+      </div>
+      <div class="qr-item">
+        <img src="age-of-ai-slides/qr-linkedin.png" alt="LinkedIn QR">
+        <div class="qr-label"><a href="https://www.linkedin.com/in/ykdojo/" target="_blank">linkedin.com/in/ykdojo</a></div>
+      </div>
+      <div class="qr-item">
+        <img src="age-of-ai-slides/qr-claude-code-video.png" alt="Claude Code video QR">
+        <div class="qr-label"><a href="https://www.youtube.com/watch?v=6ERUGFurDHY" target="_blank">Claude Code via Google Cloud tips</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress"></div>
+  <div class="nav-hint"></div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progress = document.querySelector('.progress');
+    const navHint = document.querySelector('.nav-hint');
+    let current = 0;
+
+    function getProgressiveItems(slide) {
+      const type = slide.getAttribute('data-progressive');
+      if (type === 'table') {
+        return slide.querySelectorAll('tr:not(:first-child)');
+      }
+      if (type === 'subtitle') {
+        return slide.querySelectorAll('.subtitle');
+      }
+      if (type === 'reveal') {
+        return slide.querySelectorAll('.reveal');
+      }
+      return slide.querySelectorAll('li');
+    }
+
+    function initSlide(slide, itemCount, showAll) {
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const type = slide.getAttribute('data-progressive');
+        const startsEmpty = type === 'table' || type === 'subtitle' || type === 'reveal';
+        let showCount;
+        if (showAll) {
+          showCount = items.length;
+        } else if (itemCount !== undefined) {
+          showCount = itemCount;
+        } else {
+          showCount = startsEmpty ? 0 : 1;
+        }
+        items.forEach((item, i) => {
+          if (i < showCount) item.classList.add('visible');
+          else item.classList.remove('visible');
+        });
+      }
+    }
+
+    function updateHash() {
+      const slide = slides[current];
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const visible = Array.from(items).filter(i => i.classList.contains('visible')).length;
+        if (visible > 0) {
+          window.location.hash = `${current + 1}-${visible}`;
+          return;
+        }
+      }
+      window.location.hash = current + 1;
+    }
+
+    function showSlide(n, itemCount, showAll) {
+      if (n < 0 || n >= slides.length) return;
+      slides[current].classList.remove('active');
+      current = n;
+      initSlide(slides[current], itemCount, showAll);
+      slides[current].classList.add('active');
+      progress.textContent = `${current + 1} / ${slides.length}`;
+      updateHash();
+    }
+
+    function next() {
+      const slide = slides[current];
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const hidden = Array.from(items).filter(i => !i.classList.contains('visible'));
+        if (hidden.length > 0) {
+          hidden[0].classList.add('visible');
+          updateHash();
+          return;
+        }
+      }
+      showSlide(current + 1);
+    }
+
+    function prev() {
+      const slide = slides[current];
+      if (slide.hasAttribute('data-progressive')) {
+        const items = getProgressiveItems(slide);
+        const visible = Array.from(items).filter(i => i.classList.contains('visible'));
+        const type = slide.getAttribute('data-progressive');
+        const minVisible = (type === 'table' || type === 'subtitle' || type === 'reveal') ? 0 : 1;
+        if (visible.length > minVisible) {
+          visible[visible.length - 1].classList.remove('visible');
+          updateHash();
+          return;
+        }
+      }
+      showSlide(current - 1, undefined, true);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') next();
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+    });
+
+    // Touch support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+    });
+
+    // Load from URL hash or start at 0
+    const hashParts = window.location.hash.slice(1).split('-');
+    const slideNum = parseInt(hashParts[0]) - 1;
+    const itemCount = hashParts[1] !== undefined ? parseInt(hashParts[1]) : undefined;
+    showSlide(slideNum >= 0 && slideNum < slides.length ? slideNum : 0, itemCount);
+  </script>
+
+</body>
+</html>
