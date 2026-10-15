@@ -1,7 +1,5 @@
 # Project instructions
 
-This file is `AGENTS.md`. `CLAUDE.md` is symlinked to this file.
-
 - Writing: keep user's voice, conversational, stick closely to what user said without making things up, but fix small grammar mistakes. Don't embellish or add sentences the user didn't say. Rephrasing and light cleanup is fine, but the content should come from the user.
 - Never use em dashes (—). Use regular dashes (-) instead.
 

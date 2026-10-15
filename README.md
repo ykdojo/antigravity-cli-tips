@@ -72,12 +72,6 @@ With my projects inside it, I can say things like "create a new project here," "
 
 `AGENTS.md` is a file you place in your project root to give Antigravity CLI persistent instructions. Anything you write in it gets included in every prompt within that directory. It's great for things like coding conventions, project-specific rules, or how you want the agent to behave in general.
 
-If you also use Claude Code, you can symlink `CLAUDE.md` to point to the same file so both tools share the same instructions:
-
-```bash
-ln -s AGENTS.md CLAUDE.md
-```
-
 You can also set up a global `AGENTS.md` at `~/.gemini/AGENTS.md` for instructions that apply across all projects.
 
 ## Tip 5: Talk to Antigravity CLI with your voice
