@@ -36,10 +36,13 @@ if [[ -n "$session_id" ]]; then
         transcript=$(echo "$input" | jq -r '.transcript_path // empty')
     fi
     if [[ -n "$transcript" && -f "$transcript" ]]; then
-        last_cwd=$(jq -r '.tool_calls[]? | select(.name == "run_command") | (.args.Cwd | (fromjson? // .))' "$transcript" 2>/dev/null | tail -n 1)
+        last_cwd=$(jq -R -r 'fromjson? | .tool_calls[]? | select(.name == "run_command") | ((.args.Cwd // "") | (fromjson? // .))' "$transcript" 2>/dev/null | tail -n 1)
         last_cwd="${last_cwd/#\~/$HOME}"
+        if [[ -n "$last_cwd" && "$last_cwd" != /* && -n "$initial_cwd" ]]; then
+            last_cwd="$initial_cwd/$last_cwd"
+        fi
         if [[ -n "$last_cwd" && -d "$last_cwd" ]]; then
-            cwd="$last_cwd"
+            cwd=$(cd "$last_cwd" 2>/dev/null && pwd || echo "$last_cwd")
         fi
     fi
 fi
