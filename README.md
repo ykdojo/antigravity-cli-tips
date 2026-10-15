@@ -46,7 +46,7 @@ To set this up:
 
 The script supports 10 color themes (orange, blue, teal, green, lavender, rose, gold, slate, cyan, or gray). Edit the `COLOR` variable at the top of the script to change it.
 
-![Color preview options](scripts/color-preview.png)
+![Color preview options](scripts/color-preview-v2.png)
 
 It also adapts to narrow terminals by wrapping at natural breakpoints instead of getting cut off:
 
