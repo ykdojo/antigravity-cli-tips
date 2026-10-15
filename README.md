@@ -89,6 +89,8 @@ I think the best way to think about this is like you're trying to communicate wi
 
 A common objection is "what if you're in a room with other people?" In that case, I just whisper using earphones - I personally like Apple EarPods (not AirPods). They're affordable, high quality enough, and you just whisper into them quietly. I've done it in front of other people and it works fine. In offices, people talk anyway - instead of talking to coworkers, you're talking quietly to your voice transcription system. This method works so well that it even works on a plane. It's loud enough that other people won't hear you, but if you speak close enough to the mic, your local model can still understand what you're saying.
 
+Additionally, you can use `/voice` to use the native voice dictation built into Antigravity CLI.
+
 ## Tip 6: Master different ways of verifying its output
 
 One way to verify its output if it's code is to have it write tests and make sure the tests look good and don't just hardcode true. That's one way, but you can of course check the code it generates as it goes. You can also use a visual Git client like GitHub Desktop for checking changes quickly. And having it generate a PR is a great way as well - have it create a draft PR, check the content before marking it as ready for review.
