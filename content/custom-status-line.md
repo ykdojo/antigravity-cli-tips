@@ -6,7 +6,7 @@ Flair: Resources & Guides
 I created a custom status line for Antigravity CLI and wanted to share it here. It shows the model, current directory, git branch, uncommitted file count, sync status with origin, and a visual progress bar for token usage:
 
 ```
-Claude Opus 4.6 (Thinking) | 📁antigravity-cli-tips | 🔀main (scripts/color-preview.sh uncommitted, synced 14m ago) | █▄░░░░░░░░ 15% of 250k tokens
+Gemini 4 Argon (Medium) | 📁antigravity-cli-tips | 🔀main (scripts/color-preview.sh uncommitted, synced 14m ago) | █▄░░░░░░░░ 15% of 1M tokens
 ```
 
 To set this up:
@@ -33,9 +33,9 @@ The script supports 10 color themes (orange, blue, teal, green, lavender, rose, 
 It also adapts to narrow terminals by wrapping at natural breakpoints instead of getting cut off:
 
 ```
-Claude Opus 4.6 (Thinking) | 📁antigravity-cli-tips
+Gemini 4 Argon (Medium) | 📁antigravity-cli-tips
  | 🔀main (scripts/context-bar.sh uncommitted, synced 11m ago)
- | ░░░░░░░░░░ 0% of 250k tokens
+ | ░░░░░░░░░░ 0% of 1M tokens
 ```
 
 Source: https://github.com/ykdojo/antigravity-cli-tips
