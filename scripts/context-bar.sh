@@ -25,11 +25,31 @@ input=$(cat)
 
 # Extract model and directory
 model=$(echo "$input" | jq -r '.model.display_name // .model.id // "?"')
-cwd=$(echo "$input" | jq -r '.cwd // empty')
+initial_cwd=$(echo "$input" | jq -r '.cwd // empty')
+cwd="$initial_cwd"
+
+# Prefer the latest run_command Cwd from the session transcript (falls back to .cwd if empty)
+session_id=$(echo "$input" | jq -r '.session_id // empty')
+if [[ -n "$session_id" ]]; then
+    transcript="$HOME/.gemini/antigravity-cli/brain/$session_id/.system_generated/logs/transcript.jsonl"
+    if [[ ! -f "$transcript" ]]; then
+        transcript=$(echo "$input" | jq -r '.transcript_path // empty')
+    fi
+    if [[ -n "$transcript" && -f "$transcript" ]]; then
+        last_cwd=$(jq -r '.tool_calls[]? | select(.name == "run_command") | (.args.Cwd | (fromjson? // .))' "$transcript" 2>/dev/null | tail -n 1)
+        last_cwd="${last_cwd/#\~/$HOME}"
+        if [[ -n "$last_cwd" && -d "$last_cwd" ]]; then
+            cwd="$last_cwd"
+        fi
+    fi
+fi
 dir=$(basename "$cwd" 2>/dev/null || echo "?")
 
-# Get git branch from JSON, fall back to git command
-branch=$(echo "$input" | jq -r '.vcs.branch // empty')
+# Get git branch (only use .vcs.branch from JSON if cwd hasn't changed from launch directory)
+branch=""
+if [[ "$cwd" == "$initial_cwd" ]]; then
+    branch=$(echo "$input" | jq -r '.vcs.branch // empty')
+fi
 if [[ -z "$branch" && -n "$cwd" && -d "$cwd" ]]; then
     branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
 fi
